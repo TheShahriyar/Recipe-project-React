@@ -1,0 +1,18 @@
+$primary-color: #f15025;
+$open-sans: "Open Sans", sans-serif;
+$stylish-font: "Courgette", cursive;
+
+body {
+  font-family: $open-sans !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.secondary-text {
+  font-family: $stylish-font;
+  color: $primary-color;
+}
+
+.letter-spacing {
+  letter-spacing: 0.5rem;
+}
