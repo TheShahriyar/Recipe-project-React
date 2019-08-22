@@ -8,11 +8,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.secondary-text {
+.style-text {
   font-family: $stylish-font;
   color: $primary-color;
 }
 
 .letter-spacing {
   letter-spacing: 0.5rem;
+}
+
+.header-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url(./images/homeBcg.jpeg) center/cover no-repeat;
+  min-height: calc(100vh - 56px);
+}
+
+.default-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(./images/defaultBcg.jpeg) center/cover no-repeat;
+  min-height: calc(100vh - 56px);
 }
