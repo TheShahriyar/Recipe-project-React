@@ -1,4 +1,4 @@
-## Demo-link: https://theshahriyar-recipe-project-react.netlify.com/
+## Demo-link: <a href="https://theshahriyar-recipe-project-react.netlify.com/" target="_blank">https://theshahriyar-recipe-project-react.netlify.com/</a>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
