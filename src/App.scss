@@ -10,7 +10,9 @@ body {
 
 .style-text {
   font-family: $stylish-font;
-  color: $primary-color;
+}
+.primary-color {
+  color: $primary-color !important;
 }
 
 .letter-spacing {
