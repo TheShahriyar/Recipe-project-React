@@ -6,11 +6,32 @@ import { recipeData } from "../data/tempList";
 export default class Recipes extends Component {
   constructor(props) {
     super(props);
+    this.getRecipes = this.getRecipes.bind(this);
+  }
+
+  async getRecipes() {
+    try {
+      const data = await fetch(this.state.url);
+      const jsonData = await data.json();
+      this.setState({
+        recipes: jsonData.recipes
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  componentDidMount() {
+    this.getRecipes();
   }
 
   state = {
-    recipes: recipeData,
-    search: ""
+    // recipes: recipeData,
+    recipes: [],
+    search: "",
+    url: `https://www.food2fork.com/api/search?key=${
+      process.env.REACT_APP_API_KEY
+    }`
   };
 
   handleChange = e => {
@@ -26,7 +47,6 @@ export default class Recipes extends Component {
   render() {
     return (
       <React.Fragment>
-        <h4>Hello from Recipes Page</h4>
         <Search
           search={this.state.search}
           handleChange={this.handleChange}
