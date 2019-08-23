@@ -8,7 +8,7 @@ export default class Home extends Component {
       <div>
         <Header title="Welcome to Recipes" styleClass="header-hero">
           <Link to="/recipes" className="btn btn-light btn-lg mt-3">
-            Read More
+            View Recipes
           </Link>
         </Header>
       </div>
