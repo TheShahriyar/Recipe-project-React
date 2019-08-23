@@ -13,9 +13,16 @@ export default class Recipes extends Component {
     try {
       const data = await fetch(this.state.url);
       const jsonData = await data.json();
-      this.setState({
-        recipes: jsonData.recipes
-      });
+      if (jsonData.recipes.length === 0) {
+        this.setState({
+          error: `Sorry! Please try again.`
+        });
+      } else {
+        this.setState({
+          recipes: jsonData.recipes,
+          error: ""
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +38,11 @@ export default class Recipes extends Component {
     search: "",
     url: `https://www.food2fork.com/api/search?key=${
       process.env.REACT_APP_API_KEY
-    }`
+    }`,
+    base_url: `https://www.food2fork.com/api/search?key=${
+      process.env.REACT_APP_API_KEY
+    }`,
+    query: "&q="
   };
 
   handleChange = e => {
@@ -42,6 +53,14 @@ export default class Recipes extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { base_url, query, search } = this.state;
+    this.setState(
+      {
+        url: `${base_url}${query}${search}`,
+        search: ""
+      },
+      () => this.getRecipes()
+    );
   };
 
   render() {
@@ -52,7 +71,19 @@ export default class Recipes extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <RecipeList recipes={this.state.recipes} />
+        {this.state.error ? (
+          <section className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <h3 className="style-text primary-color text-center mt-5">
+                  {this.state.error}
+                </h3>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <RecipeList recipes={this.state.recipes} />
+        )}
       </React.Fragment>
     );
   }
